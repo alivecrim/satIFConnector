@@ -1,8 +1,8 @@
-package handlers
+package project
 
 import "net/http"
 
-const CollectionName = "groundstation"
+const CollectionName = "projects"
 
 //type DevType struct {
 //	Id primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
@@ -92,7 +92,7 @@ const CollectionName = "groundstation"
 //}
 
 /*
- История
+История
 */
 func GroundStationGet() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
