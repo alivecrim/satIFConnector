@@ -14,7 +14,7 @@ type CalibrationSign struct {
 	Sign  string             `bson:"sign" json:"sign,omitempty"`
 }
 
-type GroundInterface struct {
+type GroundConnector struct {
 	Antenna       string             `json:"antenna,omitempty" bson:"antenna"`
 	Polarization  string             `json:"polarization,omitempty" bson:"polarization"`
 	Direction     string             `json:"direction,omitempty" bson:"direction"`
@@ -35,7 +35,7 @@ type GroundStation struct {
 	CalibrationIds   []primitive.ObjectID `bson:"calibration_ids" json:"calibrationIds"`
 	Los              []Lo                 `bson:"los" json:"los"`
 	ConfigTemplate   string               `bson:"config_template" json:"configTemplate"`
-	GroundInterfaces []GroundInterface    `bson:"ground_interfaces" json:"groundInterfaces"`
+	GroundInterfaces []GroundConnector    `bson:"ground_interfaces" json:"groundInterfaces"`
 }
 
 type Calibration struct {

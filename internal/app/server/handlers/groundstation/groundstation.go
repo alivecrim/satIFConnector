@@ -91,9 +91,6 @@ const CollectionName = "groundstation"
 //	Err    int    `json:"err"`
 //}
 
-/*
-История
-*/
 func GroundStationGet() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 

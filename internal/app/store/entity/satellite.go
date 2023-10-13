@@ -9,7 +9,7 @@ type Satellite struct {
 	Description string             `bson:"description" json:"description"`
 }
 
-type SatelliteInterface struct {
+type SatelliteConnector struct {
 	Id           primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
 	SatelliteId  primitive.ObjectID `bson:"project_id" json:"projectId"`
 	Name         string             `bson:"name" json:"name"`
