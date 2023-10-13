@@ -9,21 +9,21 @@ type Lo struct {
 	Value float64 `bson:"value" json:"value"`
 }
 
-type CalibrationSign struct {
+type CalibrationWithSign struct {
 	CalId primitive.ObjectID `bson:"calId" json:"calId,omitempty" `
 	Sign  string             `bson:"sign" json:"sign,omitempty"`
 }
 
 type GroundConnector struct {
-	Antenna       string             `json:"antenna,omitempty" bson:"antenna"`
-	Polarization  string             `json:"polarization,omitempty" bson:"polarization"`
-	Direction     string             `json:"direction,omitempty" bson:"direction"`
-	Band          string             `json:"band,omitempty" bson:"band"`
-	Name          string             `json:"name,omitempty" bson:"name"`
-	Description   string             `json:"description,omitempty" bson:"description"`
-	Calibrations  []CalibrationSign  `json:"calibrations,omitempty" bson:"calibrations"`
-	ConnectTo     primitive.ObjectID `json:"connectTo,omitempty" bson:"connectTo"`
-	StationConfig string             `json:"stationConfig,omitempty" bson:"stationConfig"`
+	Antenna              string                `json:"antenna,omitempty" bson:"antenna"`
+	Polarization         string                `json:"polarization,omitempty" bson:"polarization"`
+	Direction            string                `json:"direction,omitempty" bson:"direction"`
+	Band                 string                `json:"band,omitempty" bson:"band"`
+	Name                 string                `json:"name,omitempty" bson:"name"`
+	Description          string                `json:"description,omitempty" bson:"description"`
+	CalibrationsWithSign []CalibrationWithSign `json:"calibrations,omitempty" bson:"calibrations"`
+	ConnectTo            primitive.ObjectID    `json:"connectTo,omitempty" bson:"connectTo"`
+	StationConfig        string                `json:"stationConfig,omitempty" bson:"stationConfig"`
 }
 
 type GroundStation struct {
@@ -35,7 +35,7 @@ type GroundStation struct {
 	CalibrationIds   []primitive.ObjectID `bson:"calibration_ids" json:"calibrationIds"`
 	Los              []Lo                 `bson:"los" json:"los"`
 	ConfigTemplate   string               `bson:"config_template" json:"configTemplate"`
-	GroundInterfaces []GroundConnector    `bson:"ground_interfaces" json:"groundInterfaces"`
+	GroundConnectors []GroundConnector    `bson:"ground_interfaces" json:"groundInterfaces"`
 }
 
 type Calibration struct {

@@ -20,7 +20,20 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	db = client.Database("f2")
+	db = client.Database("regular_store")
+}
+
+func InitTestStore() {
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017/")
+	client, err := mongo.Connect(ctx, clientOptions)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = client.Ping(ctx, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	db = client.Database("test_store")
 }
 
 func Db() *mongo.Database {
