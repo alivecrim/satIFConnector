@@ -6,13 +6,11 @@ import {Satellite} from "../entity/satellite";
 import {Observable} from "rxjs";
 
 export interface InitState {
-  hasProjects: boolean
-  hasActiveProject: boolean
   projects: Project[]
-  activeProject: Project
+  activeProject?: Project
   relatedGroundStations: GroundStation[]
   groundStations: GroundStation[]
-  relatedSatellite: Satellite
+  relatedSatellite?: Satellite
   satellites: Satellite[]
 }
 

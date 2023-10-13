@@ -20,7 +20,7 @@ func FindAll() ([]entity.Project, error) {
 		log.Printf("error %v, failed to find etities in collection %v", err, CollectionName)
 		return nil, err
 	}
-	var result []entity.Project
+	var result = make([]entity.Project, 0)
 	err = cursor.All(ctx, &result)
 	if err != nil {
 		return nil, err

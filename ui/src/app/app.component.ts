@@ -35,11 +35,11 @@ export class AppComponent implements OnInit {
 
   checkState() {
     if (this.initState) {
-      if (!this.initState.hasProjects) {
+      if (this.initState.projects.length==0) {
         this.createProject()
         return
       }
-      if (!this.initState.hasActiveProject) {
+      if (this.initState.activeProject==undefined) {
         this.selectActiveProject()
         return
       }

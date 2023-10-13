@@ -31,27 +31,23 @@ import (
 */
 
 type InitRequestResult struct {
-	HasProjects           bool                   `json:"hasProjects"`
-	HasActiveProject      bool                   `json:"hasActiveProject"`
+	ActiveProject         *entity.Project        `json:"activeProject,omitempty"`
 	Projects              []entity.Project       `json:"projects"`
 	RelatedGroundStations []entity.GroundStation `json:"relatedGroundStations"`
-	RelatedSatellite      entity.Satellite       `json:"relatedSatellite"`
+	RelatedSatellite      *entity.Satellite      `json:"relatedSatellite,omitempty"`
 	Satellites            []entity.Satellite     `json:"satellites"`
-	ActiveProject         entity.Project         `json:"activeProject"`
 	GroundStations        []entity.GroundStation `json:"groundStations"`
 }
 
 func RequestForCurrentRelationState() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		resp := InitRequestResult{
-			HasProjects:           false,
 			Projects:              []entity.Project{},
-			HasActiveProject:      false,
-			ActiveProject:         entity.Project{},
+			ActiveProject:         nil,
 			GroundStations:        []entity.GroundStation{},
 			RelatedGroundStations: []entity.GroundStation{},
 			Satellites:            []entity.Satellite{},
-			RelatedSatellite:      entity.Satellite{},
+			RelatedSatellite:      nil,
 		}
 
 		projectResult, err := project.FindAll()
@@ -67,16 +63,14 @@ func RequestForCurrentRelationState() http.HandlerFunc {
 			}
 			return
 		}
-
 		// проверка на наличие активных проектов
 		for _, p := range projectResult {
 			if p.Active {
-				resp.HasActiveProject = true
-				resp.ActiveProject = p
+				resp.ActiveProject = &p
 				break
 			}
 		}
-		if !resp.HasActiveProject {
+		if resp.ActiveProject == nil {
 			err = writeResponse(w, &resp)
 			if err != nil {
 				panic(err)
@@ -94,6 +88,8 @@ func RequestForCurrentRelationState() http.HandlerFunc {
 			if err != nil {
 				return
 			}
+			return
+
 		}
 		resp.GroundStations = stations
 		for _, station := range stations {
@@ -116,7 +112,7 @@ func RequestForCurrentRelationState() http.HandlerFunc {
 		resp.Satellites = satellites
 		for _, sat := range satellites {
 			if sat.ProjectId == resp.ActiveProject.Id {
-				resp.RelatedSatellite = sat
+				resp.RelatedSatellite = &sat
 				break
 			}
 		}
@@ -136,8 +132,5 @@ func writeResponse(writer http.ResponseWriter, resp *InitRequestResult) error {
 	if err != nil {
 		return err
 	}
-	if err != nil {
-		return err
-	}
-	return err
+	return nil
 }

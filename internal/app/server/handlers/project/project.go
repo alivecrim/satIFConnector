@@ -10,6 +10,7 @@ import (
 
 func Create() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
 		var p = entity.Project{}
 		err := json.NewDecoder(r.Body).Decode(&p)
 		if err != nil {
