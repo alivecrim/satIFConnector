@@ -2,6 +2,7 @@ package glob
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"pasha.com/satifconnector/internal/app/store/entity"
 	"pasha.com/satifconnector/internal/app/store/groundStation"
@@ -57,6 +58,7 @@ func RequestForCurrentRelationState() http.HandlerFunc {
 		if err != nil {
 			return
 		}
+		resp.Projects = projectResult
 		// Нет проектов вообще
 		if len(projectResult) == 0 {
 			err = writeResponse(w, &resp)
@@ -114,8 +116,13 @@ func RequestForCurrentRelationState() http.HandlerFunc {
 		resp.Satellites = satellites
 		for _, sat := range satellites {
 			if sat.ProjectId == resp.ActiveProject.Id {
-				resp.RelatedSatellite = append(resp.RelatedGroundStations)
+				resp.RelatedSatellite = sat
+				break
 			}
+		}
+		err = writeResponse(w, &resp)
+		if err != nil {
+			log.Fatal(err)
 		}
 	}
 }

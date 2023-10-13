@@ -21,7 +21,7 @@ type GroundConnector struct {
 	Band                 string                `json:"band,omitempty" bson:"band"`
 	Name                 string                `json:"name,omitempty" bson:"name"`
 	Description          string                `json:"description,omitempty" bson:"description"`
-	CalibrationsWithSign []CalibrationWithSign `json:"calibrations,omitempty" bson:"calibrations"`
+	CalibrationsWithSign []CalibrationWithSign `json:"calibrationsWithSign,omitempty" bson:"calibrations_with_sign"`
 	ConnectTo            primitive.ObjectID    `json:"connectTo,omitempty" bson:"connectTo"`
 	StationConfig        string                `json:"stationConfig,omitempty" bson:"stationConfig"`
 }
@@ -35,7 +35,7 @@ type GroundStation struct {
 	CalibrationIds   []primitive.ObjectID `bson:"calibration_ids" json:"calibrationIds"`
 	Los              []Lo                 `bson:"los" json:"los"`
 	ConfigTemplate   string               `bson:"config_template" json:"configTemplate"`
-	GroundConnectors []GroundConnector    `bson:"ground_interfaces" json:"groundInterfaces"`
+	GroundConnectors []GroundConnector    `bson:"ground_connectors" json:"groundConnectors"`
 }
 
 type Calibration struct {

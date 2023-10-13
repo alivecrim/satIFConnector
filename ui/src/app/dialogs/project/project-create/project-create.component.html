@@ -1,0 +1,15 @@
+<div class="grid p-fluid">
+  <div class="col-12">
+    <form [formGroup]="formGroup">
+      <input pInput formControlName="nameForm" placeholder="name"/>
+      <input pInput formControlName="descriptionForm" placeholder="description"/>
+      <div *ngFor="let category of categories" class="field-checkbox">
+        <p-radioButton [inputId]="category.key" [value]="category" formControlName="activeForm"></p-radioButton>
+        <label [for]="category.key" class="ml-2">{{ category.name }}</label>
+      </div>
+    </form>
+  </div>
+  <button pButton label="Create" (click)="create()"></button>
+  <button pButton label="Cancel" (click)="cancel()"></button>
+
+</div>
