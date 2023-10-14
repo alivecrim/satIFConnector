@@ -11,13 +11,15 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ButtonModule} from "primeng/button";
 import {RadioButtonModule} from "primeng/radiobutton";
+import { ProjectSelectComponent } from './dialogs/project/project-select/project-select.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectCreateComponent,
     SatelliteCreateComponent,
-    GroundStationCreateComponent
+    GroundStationCreateComponent,
+    ProjectSelectComponent
   ],
   imports: [
     HttpClientModule,

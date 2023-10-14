@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"pasha.com/satifconnector/internal/app/state"
 	"pasha.com/satifconnector/internal/app/store/entity"
 	"pasha.com/satifconnector/internal/app/store/groundStation"
 	"pasha.com/satifconnector/internal/app/store/project"
@@ -67,6 +68,7 @@ func RequestForCurrentRelationState() http.HandlerFunc {
 		for _, p := range projectResult {
 			if p.Active {
 				resp.ActiveProject = &p
+				state.State().ActiveProjectId = &p.Id
 				break
 			}
 		}
@@ -89,12 +91,11 @@ func RequestForCurrentRelationState() http.HandlerFunc {
 				return
 			}
 			return
-
 		}
 		resp.GroundStations = stations
 		for _, station := range stations {
 			if station.ProjectId == resp.ActiveProject.Id {
-				resp.RelatedGroundStations = append(resp.RelatedGroundStations)
+				resp.RelatedGroundStations = append(resp.RelatedGroundStations, station)
 			}
 		}
 
@@ -108,6 +109,7 @@ func RequestForCurrentRelationState() http.HandlerFunc {
 			if err != nil {
 				return
 			}
+			return
 		}
 		resp.Satellites = satellites
 		for _, sat := range satellites {

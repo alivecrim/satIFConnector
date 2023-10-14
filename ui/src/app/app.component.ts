@@ -4,15 +4,19 @@ import {Satellite} from "./entity/satellite";
 import {GroundStation} from "./entity/groundStation";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {ProjectCreateComponent} from "./dialogs/project/project-create/project-create.component";
+import {ProjectSelectComponent} from "./dialogs/project/project-select/project-select.component";
+import {
+  GroundStationCreateComponent
+} from "./dialogs/groundStation/ground-station-create/ground-station-create.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [ DialogService]
+  providers: [DialogService]
 })
 export class AppComponent implements OnInit {
-  private initState?: InitState;
+  initState?: InitState;
   private sat?: Satellite;
   private gs?: GroundStation;
   ref: DynamicDialogRef | undefined;
@@ -35,11 +39,11 @@ export class AppComponent implements OnInit {
 
   checkState() {
     if (this.initState) {
-      if (this.initState.projects.length==0) {
+      if (this.initState.projects.length == 0) {
         this.createProject()
         return
       }
-      if (this.initState.activeProject==undefined) {
+      if (!this.initState.activeProject) {
         this.selectActiveProject()
         return
       }
@@ -63,26 +67,35 @@ export class AppComponent implements OnInit {
 
   }
 
-  private createProject() {
+  createProject() {
     this.ref = this.dialogService.open(ProjectCreateComponent, {header: 'Create new project'});
     this.ref.onClose.subscribe(r => {
       this.loadState()
     })
   }
 
-  private selectActiveProject() {
+  selectActiveProject() {
+    this.ref = this.dialogService.open(ProjectSelectComponent, {header: 'Select active project', data: this.initState});
+    this.ref.onClose.subscribe(r => {
+      this.loadState()
+    })
+  }
+
+  createGroundStation() {
+    this.ref = this.dialogService.open(GroundStationCreateComponent, {
+      header: 'Create new GroundStation',
+      data: this.initState
+    });
+    this.ref.onClose.subscribe(r => {
+      this.loadState()
+    })
+  }
+
+   selectGroundStation() {
 
   }
 
-  private createGroundStation() {
-
-  }
-
-  private selectGroundStation() {
-
-  }
-
-  private createSatellite() {
+  createSatellite() {
 
   }
 

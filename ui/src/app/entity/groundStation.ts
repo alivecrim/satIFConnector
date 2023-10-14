@@ -1,9 +1,9 @@
-interface CalibrationWithSign {
+export interface CalibrationWithSign {
   calId: string
   sign: string
 }
 
-interface GroundConnector {
+export interface GroundConnector {
   antenna: string//       string                `json:"antenna,omitempty" bson:"antenna"`
   polarization: string//     string                `json:"polarization,omitempty" bson:"polarization"`
   direction: string//       string                `json:"direction,omitempty" bson:"direction"`
@@ -15,14 +15,14 @@ interface GroundConnector {
   stationConfig?: string//        string                `json:"stationConfig,omitempty" bson:"stationConfig"`
 }
 
-interface Lo {
+export interface Lo {
   name: string
   value: number
 }
 
 export interface GroundStation {
   id?: string
-  projectId: string
+  projectId?: string
   satelliteId?: string
   name: string
   description: string

@@ -6,12 +6,12 @@ type CurrentRelationState struct {
 	ActiveProjectId *primitive.ObjectID
 }
 
-var state CurrentRelationState
+var state *CurrentRelationState
 
 func init() {
-	state = CurrentRelationState{ActiveProjectId: nil}
+	state = &CurrentRelationState{ActiveProjectId: nil}
 }
 
-func State() CurrentRelationState {
+func State() *CurrentRelationState {
 	return state
 }

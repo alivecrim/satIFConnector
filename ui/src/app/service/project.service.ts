@@ -24,4 +24,8 @@ export class ProjectService {
   delete(id: string): Observable<any> {
     return this.http.delete<any>(this.api + `/${id}`)
   }
+
+  setActive(id: string): Observable<any> {
+    return this.http.put<any>(this.api + `/setActive/${id}`, null)
+  }
 }

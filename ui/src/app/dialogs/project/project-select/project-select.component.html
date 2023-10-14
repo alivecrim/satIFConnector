@@ -1,0 +1,11 @@
+<div class="grid p-fluid">
+  <div class="col-12">
+    <form [formGroup]="formGroup">
+      <select formControlName="selectedProjectId">
+        <option *ngFor="let p of state?.projects" [value]="p.id">{{p.name}}</option>
+      </select>
+    </form>
+  </div>
+  <button pButton label="Apply" (click)="apply()"></button>
+
+</div>

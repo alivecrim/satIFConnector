@@ -38,8 +38,4 @@ export class ProjectCreateComponent {
     })
 
   }
-
-  cancel() {
-    this.ref.close({closeCode: 0})
-  }
 }

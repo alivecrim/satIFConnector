@@ -1,2 +1,8 @@
-<p>work</p>
-dsfadsf
+<button (click)="createProject()">Создать проект</button>
+<button (click)="selectActiveProject()">Выбрать активный проект проект</button>
+<button (click)="createGroundStation()">Создать земную станцию</button>
+<button (click)="selectGroundStation()">Выбрать земную станцию</button>
+<button (click)="createSatellite()">Создать спутник</button>
+<div>Активный проект: {{initState?.activeProject?.name}}</div>
+<div>Related groundStation:</div>
+<div *ngFor="let gs of initState?.relatedGroundStations">&nbsp;&nbsp;&nbsp;&nbsp; Name: {{gs.name}}</div>
