@@ -5,7 +5,7 @@ import {ProjectService} from "../../../service/project.service";
 import {ProjectImpl} from "../../../entity/project";
 
 @Component({
-  selector: 'app-project-create',
+  selector: 'app-projectStore-create',
   templateUrl: './project-create.component.html',
   styleUrls: ['./project-create.component.scss']
 })

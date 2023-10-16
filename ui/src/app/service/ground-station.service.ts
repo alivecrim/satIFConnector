@@ -8,7 +8,7 @@ import {GroundStation} from "../entity/groundStation";
 })
 export class GroundStationService {
 
-  private api = "/api/crud/groundStation"
+  private api = "/api/crud/groundStationStore"
 
   constructor(private http: HttpClient) {
   }

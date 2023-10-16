@@ -68,14 +68,14 @@ export class AppComponent implements OnInit {
   }
 
   createProject() {
-    this.ref = this.dialogService.open(ProjectCreateComponent, {header: 'Create new project'});
+    this.ref = this.dialogService.open(ProjectCreateComponent, {header: 'Create new projectStore'});
     this.ref.onClose.subscribe(r => {
       this.loadState()
     })
   }
 
   selectActiveProject() {
-    this.ref = this.dialogService.open(ProjectSelectComponent, {header: 'Select active project', data: this.initState});
+    this.ref = this.dialogService.open(ProjectSelectComponent, {header: 'Select active projectStore', data: this.initState});
     this.ref.onClose.subscribe(r => {
       this.loadState()
     })

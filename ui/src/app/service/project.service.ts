@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ProjectService {
 
-  private api = "/api/crud/project"
+  private api = "/api/crud/projectStore"
 
   constructor(private http: HttpClient) {
   }

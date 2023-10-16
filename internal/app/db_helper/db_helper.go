@@ -1,4 +1,4 @@
-package store
+package db_helper
 
 import (
 	"context"

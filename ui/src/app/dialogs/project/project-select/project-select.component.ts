@@ -5,7 +5,7 @@ import {ProjectService} from "../../../service/project.service";
 import {InitState} from "../../../service/init-setup.service";
 
 @Component({
-  selector: 'app-project-select',
+  selector: 'app-projectStore-select',
   templateUrl: './project-select.component.html',
   styleUrls: ['./project-select.component.scss']
 })
